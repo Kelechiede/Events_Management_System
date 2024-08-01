@@ -19,8 +19,12 @@ Events_Management_System/
 ├── app.py
 ├── models.py
 ├── requirements.txt
+├── Procfile
+├── data_ingestion.py                  # Script for data ingestion
+├── clear_data.py                      # Script to clear existing data
+├── notebooks/event_analysis.ipynb  # run on jupyter notebook IDE
 ├── scripts/
-│   ├── data_ingestion.py
+│   ├── data_ingestion.py              # Optional: Can also be placed here
 ├── templates/
 │   ├── base.html
 │   ├── index.html
@@ -28,9 +32,15 @@ Events_Management_System/
 │   ├── add_user.html
 │   ├── update_user.html
 │   ├── venues.html
+│   ├── add_venue.html
+│   ├── update_venue.html
 │   ├── events.html
+│   ├── add_event.html
+│   ├── update_event.html
 │   ├── visualizations.html
 │   ├── csrf_error.html
+│   ├── login.html
+│   ├── signup.html
 ├── static/
 │   ├── css/
 │   │   └── style.css
@@ -39,8 +49,10 @@ Events_Management_System/
 ├── environ/
 │   ├── Scripts/
 │   │   ├── activate
+│   │   ├── ...
 │   ├── ...
 └── ...
+
 
 Installation
 1. Clone the repository: 

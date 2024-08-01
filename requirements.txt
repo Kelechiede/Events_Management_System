@@ -2,4 +2,6 @@ Flask
 SQLAlchemy
 psycopg2-binary
 Flask-WTF
+pip install gunicorn
+pip freeze > requirements.txt
 
