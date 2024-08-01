@@ -1,3 +1,5 @@
+#####################################################
+import os
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -9,7 +11,7 @@ from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationE
 from sqlalchemy.orm import Session
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:POSTgres123%40@localhost/ems_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://postgres:POSTgres123%40@localhost/ems_db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key'
 
@@ -17,6 +19,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
 
 @app.template_filter('datetimeformat')
 def datetimeformat(value, format='%Y-%m-%dT%H:%M'):
