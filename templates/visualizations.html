@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Events Management System</h1>
+                <p>Author: Kelechukwu Innocent Ede</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/users">Users</a></li>
+                    <li><a href="/venues">Venues</a></li>
+                    <li><a href="/events">Events</a></li>
+                    <li class="current"><a href="/visualizations">Visualizations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Visualizations</h2>
+        <canvas id="eventsPerVenueChart" width="400" height="200"></canvas>
+        <canvas id="attendeesPerEventChart" width="400" height="200"></canvas>
+        <canvas id="userRegistrationTrendsChart" width="400" height="200"></canvas>
+        <canvas id="eventPopularityChart" width="400" height="200"></canvas>
+        <canvas id="eventDatesDistributionChart" width="400" height="200"></canvas>
+        <canvas id="eventsPerUserChart" width="400" height="200"></canvas>
+        <canvas id="eventsPerUserPieChart" width="400" height="200"></canvas>
+        <canvas id="eventsPerVenuePieChart" width="400" height="200"></canvas>
+        <div id="averageAttendees"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

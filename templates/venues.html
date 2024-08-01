@@ -1,0 +1,41 @@
+<!-- templates/venues.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Venues</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes">
+        {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for venue in venues %}
+        <tr>
+            <td>{{ venue.name }}</td>
+            <td>{{ venue.location }}</td>
+            <td>{{ venue.capacity }}</td>
+            <td>
+                <a href="{{ url_for('update_venue', venue_id=venue.venue_id) }}">Edit</a>
+                <form action="{{ url_for('delete_venue', venue_id=venue.venue_id) }}" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('add_venue') }}">Add Venue</a>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!-- templates/update_event.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Update Event</h2>
+<form action="{{ url_for('update_event', event_id=event.event_id) }}" method="post">
+    <label for="user_id">User:</label>
+    <select id="user_id" name="user_id" required>
+        {% for user in users %}
+        <option value="{{ user.user_id }}" {% if user.user_id == event.user_id %}selected{% endif %}>{{ user.username }}</option>
+        {% endfor %}
+    </select>
+    <label for="venue_id">Venue:</label>
+    <select id="venue_id" name="venue_id" required>
+        {% for venue in venues %}
+        <option value="{{ venue.venue_id }}" {% if venue.venue_id == event.venue_id %}selected{% endif %}>{{ venue.name }}</option>
+        {% endfor %}
+    </select>
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" value="{{ event.title }}" required>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required>{{ event.description }}</textarea>
+    <label for="event_date">Event Date:</label>
+    <input type="datetime-local" id="event_date" name="event_date" value="{{ event.event_date|datetimeformat }}" required>
+    <button type="submit">Update Event</button>
+</form>
+{% endblock %}

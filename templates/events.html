@@ -1,0 +1,46 @@
+<!-- templates/events.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Events</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes">
+        {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Venue</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.title }}</td>
+            <td>{{ event.description }}</td>
+            <td>{{ event.event_date|datetimeformat }}</td>
+            <td>{{ event.venue.name }}</td>
+            <td>
+                <a href="{{ url_for('update_event', event_id=event.event_id) }}">Edit</a>
+                <form action="{{ url_for('delete_event', event_id=event.event_id) }}" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+                <form action="{{ url_for('register_event', event_id=event.event_id) }}" method="post" style="display:inline;">
+                    <button type="submit">Register</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('add_event') }}">Add Event</a>
+{% endblock %}
