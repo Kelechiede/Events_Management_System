@@ -84,7 +84,7 @@ Explore the features such as managing events, venues, and viewing data visualiza
 
 **Live Demo**
 
-Check out the live demo of the Events Management System: [Live Demo](https://your-app-name.herokuapp.com)
+Check out the live demo of the Events Management System: [Live Demo](https://events-management-system-890b21f6a4d2.herokuapp.com/)
 
 
 License
